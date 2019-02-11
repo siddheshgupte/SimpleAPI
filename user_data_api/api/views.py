@@ -19,9 +19,5 @@ class GetDataByNameView(APIView):
     def get(self, request, name):
         user_data = UserDataModel.objects.get(name=name)
         serializer = UserDataModelSerializer(user_data)
-<<<<<<< HEAD
         return Response(serializer.data)
 
-=======
-        return Response(serializer.data)
->>>>>>> ef4618ab7d04d43453adf3201c5e14a69a3c7862
