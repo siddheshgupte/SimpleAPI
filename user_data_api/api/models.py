@@ -4,6 +4,7 @@ from django.db import models
 
 
 class UserDataModel(models.Model):
+
     GENDER_CHOICES = (
         ('M', 'Male'),
         ('F', 'Female'),
