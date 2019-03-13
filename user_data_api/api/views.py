@@ -16,8 +16,8 @@ class CreateView(generics.ListCreateAPIView):
 
 
 class GetDataByNameView(APIView):
-    def get(self, request, name):
-        user_data = UserDataModel.objects.get(name=name)
+    def get(self, request, name, year):
+        user_data = UserDataModel.objects.get(name=name, birth_date__contains=year)
         serializer = UserDataModelSerializer(user_data)
         return Response(serializer.data)
 
