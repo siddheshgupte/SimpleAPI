@@ -26,3 +26,16 @@ class GetDataByNameView(APIView):
         serializer = UserDataModelSerializer(user_data)
         return Response(serializer.data)
 
+class UpdateView(generics.UpdateAPIView):
+    queryset = UserDataModel.objects.all()
+    serializer_class = UserDataModelSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def update(self, request, *args, **kwargs):
+        instance = UserDataModel.objects.filter(name=request.data['name'])
+        instance.pref_width = request.data.get("pref_width")
+        instance.save()
+
+        serializer = self.get_serializer(instance)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer.data)

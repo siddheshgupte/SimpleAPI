@@ -21,6 +21,9 @@ class UserDataModel(models.Model):
     weight = models.FloatField(blank=True, default=False)
     group = models.CharField(max_length=1, blank=True, default='1')
 
+    pref_width = models.FloatField(blank=True, default=False, null=True)
+    pref_color = models.TextField(max_length=20, blank=True, default=None, null=True)
+
     # date_created = models.DateTimeField(auto_now_add=True)
     # date_modified = models.DateTimeField(auto_now=True)
 
