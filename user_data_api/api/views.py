@@ -26,6 +26,7 @@ class GetDataByNameView(APIView):
         serializer = UserDataModelSerializer(user_data)
         return Response(serializer.data)
 
+
 class UpdateView(generics.UpdateAPIView):
     queryset = UserDataModel.objects.all()
     serializer_class = UserDataModelSerializer
@@ -39,3 +40,4 @@ class UpdateView(generics.UpdateAPIView):
         serializer = self.get_serializer(instance)
         serializer.is_valid(raise_exception=True)
         self.perform_update(serializer.data)
+
